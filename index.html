@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Portfolio | Денис</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-deep: #0A1428;
+            --bg-card: #0F1B3A;
+            --accent-gradient: linear-gradient(135deg, #00D4FF 0%, #7B5EFF 100%);
+            --neon-blue: #00D4FF;
+            --neon-purple: #7B5EFF;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .neon-border {
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .neon-border:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .neon-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 400px;
+            background: radial-gradient(circle, rgba(123, 94, 255, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+        }
+
+        .btn-neon {
+            background: var(--accent-gradient);
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-neon:hover {
+            box-shadow: 0 0 20px rgba(123, 94, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .image-container img {
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="hero-glow"></div>
+
+    <!-- Header / Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-opacity-80 backdrop-blur-md border-b border-white/10 px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-black tracking-tighter">AI PORTFOLIO</div>
+        <div class="hidden md:flex gap-8 text-sm font-medium opacity-70">
+            <a href="#projects" class="hover:text-[#00D4FF] hover:opacity-100 transition-all">Проекты</a>
+            <a href="#skills" class="hover:text-[#00D4FF] hover:opacity-100 transition-all">Стек</a>
+            <a href="#agents" class="hover:text-[#00D4FF] hover:opacity-100 transition-all">GPTs Агенты</a>
+        </div>
+        <a href="#contact" class="skill-tag border-[#00D4FF]/30 text-[#00D4FF]">Связь</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 max-w-7xl mx-auto text-center">
+        <div class="image-container relative mb-12 rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/20 max-w-5xl mx-auto border border-white/10">
+            <!-- Hero Image Link -->
+            <img src="https://lh3.googleusercontent.com/d/1bi5hhQBYWiphqua8dHu6iLTiaDKzo6XM" alt="Hero AI" class="w-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0A1428] via-transparent to-transparent"></div>
+        </div>
+        
+        <h1 class="text-5xl md:text-8xl font-black mb-6 leading-none">
+            НЕЙРОСЕТИ <span class="neon-text">С НУЛЯ</span><br>
+            <span class="text-3xl md:text-5xl opacity-90">ЗА ПОЛТОРА ЧАСА</span>
+        </h1>
+        <p class="text-xl text-white/60 max-w-2xl mx-auto mb-10">
+            Создание автономных AI-систем, разработка ботов и внедрение нейросетей в бизнес-процессы.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#projects" class="btn-neon">Смотреть проекты <i data-lucide="arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-black mb-12 flex items-center gap-4">
+            <i data-lucide="layers" class="text-[#00D4FF]"></i> ГЛАВНЫЕ ПРОЕКТЫ
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Funnel Project -->
+            <div class="card neon-border">
+                <div class="text-[#7B5EFF] mb-4"><i data-lucide="zap"></i></div>
+                <h3 class="text-xl font-bold mb-3 uppercase">Воронка: Квиз + Бот MAX</h3>
+                <p class="text-white/60 mb-6 text-sm">Бот со встроенным MiniAPP и доступом к Gemini. Реализовано на Bolt.new.</p>
+                <a href="https://kviz-bolt-new-001.vercel.app/" target="_blank" class="text-[#00D4FF] text-sm font-bold flex items-center gap-2 hover:underline">
+                    ОТКРЫТЬ <i data-lucide="external-link" size="16"></i>
+                </a>
+            </div>
+
+            <!-- Bot for Company -->
+            <div class="card neon-border">
+                <div class="text-[#00D4FF] mb-4"><i data-lucide="bot"></i></div>
+                <h3 class="text-xl font-bold mb-3 uppercase">Бот MAX для бизнеса</h3>
+                <p class="text-white/60 mb-6 text-sm">Корпоративный мессенджер-бот, разработанный с помощью ChatGPT.</p>
+                <a href="https://max.ru/id772206988783_1_bot" target="_blank" class="text-[#00D4FF] text-sm font-bold flex items-center gap-2 hover:underline">
+                    ОТКРЫТЬ <i data-lucide="external-link" size="16"></i>
+                </a>
+            </div>
+
+            <!-- Bot Constructors -->
+            <div class="card neon-border">
+                <div class="text-white mb-4"><i data-lucide="box"></i></div>
+                <h3 class="text-xl font-bold mb-3 uppercase">Конструкторы ботов</h3>
+                <p class="text-white/60 mb-6 text-sm">Экспертное владение платформами: Botmother, Jetbot24, Smartbotpro.</p>
+                <div class="flex gap-2 opacity-50 text-[10px]">
+                    <span>#NoCode</span> <span>#Automation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presentations and Planners -->
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="card neon-border border-white/5">
+                <h3 class="font-bold mb-4 flex items-center gap-2"><i data-lucide="file-text" size="18"></i> МАТЕРИАЛЫ И ОБУЧЕНИЕ</h3>
+                <ul class="space-y-4 text-sm">
+                    <li>
+                        <a href="https://cloud.mail.ru/public/dDgV/MECEhHQU2" target="_blank" class="flex justify-between items-center hover:text-[#00D4FF]">
+                            <span>Презентация для стройкомпании (NotebookLM)</span>
+                            <i data-lucide="link" size="14"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://cloud.mail.ru/public/XNVE/AWkLfVKNk" target="_blank" class="flex justify-between items-center hover:text-[#00D4FF]">
+                            <span>Озвученная презентация (Zvukogram)</span>
+                            <i data-lucide="link" size="14"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card neon-border border-white/5">
+                <h3 class="font-bold mb-4 flex items-center gap-2"><i data-lucide="table" size="18"></i> ИНСТРУМЕНТЫ ПЛАНИРОВАНИЯ</h3>
+                <ul class="space-y-4 text-sm">
+                    <li>
+                        <a href="https://docs.google.com/spreadsheets/d/131-eZ0qcwsmQIC7hy3ToHhottodCtOekK30XIHof4kk/edit?usp=sharing" target="_blank" class="flex justify-between items-center hover:text-[#00D4FF]">
+                            <span>Claude Planner (Google Sheets + Claude Opus)</span>
+                            <i data-lucide="link" size="14"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills/Stack Section -->
+    <section id="skills" class="py-20 px-6 bg-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl font-black mb-8 flex items-center gap-4">
+                        <i data-lucide="brain-circuit" class="text-[#7B5EFF]"></i> AI СТЕК
+                    </h2>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag border-[#7B5EFF]/40">Claude</span>
+                        <span class="skill-tag border-[#7B5EFF]/40">ChatGPT</span>
+                        <span class="skill-tag border-[#7B5EFF]/40">Gemini</span>
+                        <span class="skill-tag border-[#7B5EFF]/40">DeepSeek</span>
+                        <span class="skill-tag border-[#7B5EFF]/40">QWEN</span>
+                        <span class="skill-tag border-[#7B5EFF]/40">Mistral</span>
+                        <span class="skill-tag">Grok</span>
+                        <span class="skill-tag">Kimi</span>
+                        <span class="skill-tag">Genspark</span>
+                        <span class="skill-tag">Kling</span>
+                        <span class="skill-tag">NanoBanana</span>
+                        <span class="skill-tag">Sora</span>
+                        <span class="skill-tag">VEO3</span>
+                        <span class="skill-tag">Leonardo</span>
+                        <span class="skill-tag">RunwayML</span>
+                        <span class="skill-tag">Syntx.ai</span>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-black mb-8 flex items-center gap-4">
+                        <i data-lucide="cpu" class="text-[#00D4FF]"></i> АВТОМАТИЗАЦИЯ
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-[#00D4FF] shadow-[0_0_8px_#00D4FF]"></div>
+                            <span class="font-medium">Accio</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-[#00D4FF] shadow-[0_0_8px_#00D4FF]"></div>
+                            <span class="font-medium">KIMI Claw</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-[#00D4FF] shadow-[0_0_8px_#00D4FF]"></div>
+                            <span class="font-medium">Genspark Claw</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GPTs Agents Section -->
+    <section id="agents" class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-black mb-12 flex items-center gap-4 text-center justify-center">
+            <i data-lucide="bot-message-square" class="text-[#7B5EFF]"></i> КАСТОМНЫЕ GPTs АГЕНТЫ
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a href="https://chatgpt.com/g/g-69d2827bd9ac8191a24900bdff0deef3-tz-arkhitektor-dlia-claude" target="_blank" class="card neon-border flex justify-between items-center group">
+                <div>
+                    <h4 class="font-bold uppercase tracking-wide group-hover:text-[#00D4FF] transition-colors">Архитектор ТЗ</h4>
+                    <p class="text-white/40 text-sm">Создание ТЗ на разработку ботов</p>
+                </div>
+                <i data-lucide="chevron-right" class="opacity-30 group-hover:opacity-100 transition-all"></i>
+            </a>
+
+            <a href="https://chatgpt.com/g/g-69d28491b5608191a77ef9e6032a8f8f-revizor-tz-tekhlid-auditor" target="_blank" class="card neon-border flex justify-between items-center group">
+                <div>
+                    <h4 class="font-bold uppercase tracking-wide group-hover:text-[#00D4FF] transition-colors">Аудитор ТЗ</h4>
+                    <p class="text-white/40 text-sm">Техлид-ревизор документации</p>
+                </div>
+                <i data-lucide="chevron-right" class="opacity-30 group-hover:opacity-100 transition-all"></i>
+            </a>
+
+            <a href="https://chatgpt.com/g/g-69afbf9910388191bfee282e7830ac97-gpt-tekhnicheskii-pisatel" target="_blank" class="card neon-border flex justify-between items-center group">
+                <div>
+                    <h4 class="font-bold uppercase tracking-wide group-hover:text-[#00D4FF] transition-colors">Технический писатель</h4>
+                    <p class="text-white/40 text-sm">Генерация документации</p>
+                </div>
+                <i data-lucide="chevron-right" class="opacity-30 group-hover:opacity-100 transition-all"></i>
+            </a>
+
+            <a href="https://chatgpt.com/g/g-69bbfa9293948191a2bfdb5975d947ae-generator-promptov-dlia-fotosessii-s-zagruzkoi-foto" target="_blank" class="card neon-border flex justify-between items-center group">
+                <div>
+                    <h4 class="font-bold uppercase tracking-wide group-hover:text-[#00D4FF] transition-colors">Генератор промптов</h4>
+                    <p class="text-white/40 text-sm">Промпты для фотосессий по фото</p>
+                </div>
+                <i data-lucide="chevron-right" class="opacity-30 group-hover:opacity-100 transition-all"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-20 px-6 border-t border-white/10 text-center">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-2xl font-black mb-8 neon-text">ГОТОВ К НОВЫМ ВЫЗОВАМ</h2>
+            <div class="flex justify-center gap-8 mb-12 opacity-50">
+                <a href="#" class="hover:text-[#00D4FF]"><i data-lucide="github"></i></a>
+                <a href="#" class="hover:text-[#00D4FF]"><i data-lucide="send"></i></a>
+                <a href="#" class="hover:text-[#00D4FF]"><i data-lucide="mail"></i></a>
+            </div>
+            <p class="text-sm text-white/30 uppercase tracking-[0.2em]">
+                Этот сайт сделан за 10 минут с помощью Accio.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
