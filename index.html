@@ -105,6 +105,45 @@
             mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
         }
+        .contact-widget {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            width: 280px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+
+        .contact-widget.active {
+            display: block;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.2s;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--neon-blue);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -118,7 +157,25 @@
             <a href="#skills" class="hover:text-[#00D4FF] hover:opacity-100 transition-all">Стек</a>
             <a href="#agents" class="hover:text-[#00D4FF] hover:opacity-100 transition-all">GPTs Агенты</a>
         </div>
-        <a href="#contact" class="skill-tag border-[#00D4FF]/30 text-[#00D4FF]">Связь</a>
+        <div class="relative">
+            <button id="contactBtn" class="skill-tag border-[#00D4FF]/30 text-[#00D4FF] cursor-pointer hover:bg-[#00D4FF]/5 transition-all">Связь</button>
+            <div id="contactWidget" class="contact-widget">
+                <div class="space-y-1">
+                    <a href="tel:+79163439281" class="contact-link">
+                        <i data-lucide="phone" size="18"></i>
+                        <span>+7 916 343 92 81</span>
+                    </a>
+                    <a href="https://t.me/golikov_denis" target="_blank" class="contact-link">
+                        <i data-lucide="send" size="18"></i>
+                        <span>Telegram @golikov_denis</span>
+                    </a>
+                    <a href="https://max.ru/u/f9LHodD0cOLQdCaUczhKxBw52Ej8l2mHlwtIXH7TtE5kDxDterg_fHMH72k" target="_blank" class="contact-link">
+                        <i data-lucide="message-square" size="18"></i>
+                        <span>Мессенджер МАКС</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -308,10 +365,13 @@
         <div class="max-w-7xl mx-auto">
             <h2 class="text-2xl font-black mb-8 neon-text">ГОТОВ К НОВЫМ ВЫЗОВАМ</h2>
             <div class="flex justify-center gap-8 mb-12 opacity-50">
-                <a href="#" class="hover:text-[#00D4FF]"><i data-lucide="github"></i></a>
-                <a href="#" class="hover:text-[#00D4FF]"><i data-lucide="send"></i></a>
-                <a href="#" class="hover:text-[#00D4FF]"><i data-lucide="mail"></i></a>
+                <a href="https://github.com/scratch-book" target="_blank" class="hover:text-[#00D4FF] transition-colors"><i data-lucide="github"></i></a>
+                <a href="https://t.me/golikov_denis" target="_blank" class="hover:text-[#00D4FF] transition-colors"><i data-lucide="send"></i></a>
+                <a href="https://max.ru/u/f9LHodD0cOLQdCaUczhKxBw52Ej8l2mHlwtIXH7TtE5kDxDterg_fHMH72k" target="_blank" class="hover:text-[#00D4FF] transition-colors"><i data-lucide="message-square"></i></a>
             </div>
+            <p class="text-sm text-white/30 uppercase tracking-[0.2em] mb-4">
+                +7 916 343 92 81
+            </p>
             <p class="text-sm text-white/30 uppercase tracking-[0.2em]">
                 Этот сайт сделан за 10 минут с помощью Accio.
             </p>
@@ -321,6 +381,21 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+
+        // Contact Widget Toggle
+        const contactBtn = document.getElementById('contactBtn');
+        const contactWidget = document.getElementById('contactWidget');
+
+        contactBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            contactWidget.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!contactWidget.contains(e.target) && e.target !== contactBtn) {
+                contactWidget.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
